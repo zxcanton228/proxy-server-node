@@ -3,8 +3,8 @@ LABEL authors="Kirill Vegele"
 
 WORKDIR /usr/src/app
 
-COPY package*.json .
-COPY pnpm-lock.yaml .
+COPY package*.json ./
+COPY pnpm-lock.yaml ./
 
 RUN npm install -g pnpm
 RUN pnpm install
@@ -13,4 +13,5 @@ COPY . .
 
 EXPOSE 8080
 
-CMD [ "pnpm", "run", "start" ]
+RUN pnpm run build
+CMD ["pnpm", "run", "start"]
